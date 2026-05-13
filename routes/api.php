@@ -15,6 +15,13 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::post('/create-student', [StudentController::class, 'createStudent']);
+Route::post('/student/create', [StudentController::class, 'createStudent']);
 
-Route::post('/student/get', [StudentController::class, 'getStudent']);
+Route::get('/student/get', [StudentController::class, 'getStudent']);
+Route::post('/student/update', [StudentController::class, 'update']);
+
+
+Route::delete('/student/delete/{id}', [StudentController::class, 'delete']);
+
+
+Route::get('/student/single/get/{id}', [StudentController::class, 'getStudentSingle']);
