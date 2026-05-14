@@ -51,12 +51,9 @@ class StudentController extends Controller
 
     public function getStudent(Request $request)
     {
-
-
          $per_page = $request->per_page;
 
-        $students = Student::orderBy('id', 'asc')->paginate($per_page);
-
+        $students = Student::with('personalInfo')->orderBy('id', 'asc')->paginate($per_page);
 
         if (!$students->isEmpty()) {
 
@@ -69,6 +66,25 @@ class StudentController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'students not found',
+            ]);
+        }
+    }
+
+
+    public function getStudentWithPersonalInfo($id)
+    {
+        $student = Student::with('personalInfo')->where('id', $id)->first();
+
+        if ($student) {
+            return response()->json([
+                'status'  => true,
+                'message' => 'student get successfully',
+                'data'    => $student,
+            ]);
+        } else {
+            return response()->json([
+                'status'  => false,
+                'message' => 'student not found',
             ]);
         }
     }
