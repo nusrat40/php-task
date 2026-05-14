@@ -10,4 +10,9 @@ class Student extends Model
     {
         return $this->hasOne(PersonalInfo::class, 'student_id', 'id');
     }
+
+    public function educationalInfo()
+    {
+        return $this->hasMany(EducationalInfo::class, 'student_id', 'id');
+    }
 }

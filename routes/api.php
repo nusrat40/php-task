@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\PersonalInfoController;
+use App\Http\Controllers\EducationalInfoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,9 @@ Route::get('/personal-info/get', [PersonalInfoController::class, 'getPersonalInf
 Route::get('/personal-info/single/get/{id}', [PersonalInfoController::class, 'getPersonalInfoSingle']);
 Route::post('/personal-info/update', [PersonalInfoController::class, 'updatePersonalInfo']);
 Route::delete('/personal-info/delete/{id}', [PersonalInfoController::class, 'deletePersonalInfo']);
+
+Route::post('/educational-info/create', [EducationalInfoController::class, 'createEducationalInfo']);
+Route::get('/educational-info/get', [EducationalInfoController::class, 'getEducationalInfo']);
+Route::get('/educational-info/single/get/{id}', [EducationalInfoController::class, 'getEducationalInfoSingle']);
+Route::post('/educational-info/update', [EducationalInfoController::class, 'updateEducationalInfo']);
+Route::delete('/educational-info/delete/{id}', [EducationalInfoController::class, 'deleteEducationalInfo']);

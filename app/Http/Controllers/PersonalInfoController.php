@@ -51,7 +51,7 @@ class PersonalInfoController extends Controller
     {
         $per_page = $request->per_page;
 
-        $personalInfos = PersonalInfo::orderBy('id', 'asc')->paginate($per_page);
+        $personalInfos = PersonalInfo::with('student')->orderBy('id', 'asc')->paginate($per_page);
 
         if (!$personalInfos->isEmpty()) {
             return response()->json([

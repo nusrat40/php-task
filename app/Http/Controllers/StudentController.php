@@ -53,7 +53,7 @@ class StudentController extends Controller
     {
          $per_page = $request->per_page;
 
-        $students = Student::with('personalInfo')->orderBy('id', 'asc')->paginate($per_page);
+        $students = Student::with('personalInfo', 'educationalInfo')->orderBy('id', 'asc')->paginate($per_page);
 
         if (!$students->isEmpty()) {
 
